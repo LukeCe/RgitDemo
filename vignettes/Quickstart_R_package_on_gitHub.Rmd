@@ -1,0 +1,40 @@
+---
+title: "Quickstart guide for creating an R package on gitHub"
+author: Lukas Dargel
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Quickstart_R_package_on_gitHub}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library("RgitDemo")
+```
+
+
+## Steps to get started
+
+```{r, eval=FALSE}
+# optionally write default settings into your R profile
+usethis::edit_r_profile()
+usethis::edit_r_environ()
+
+# create this project
+usethis::create_package("/Projects/Packages/RgitDemo")
+
+# create this vignette
+usethis::use_vignette("Quickstart_R_package_on_gitHub")
+
+# initialize git
+
+```
+
+## Some explanations
