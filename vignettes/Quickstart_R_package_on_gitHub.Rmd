@@ -3,7 +3,7 @@ title: "Quickstart guide for creating an R package on gitHub"
 author: Lukas Dargel
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Quickstart_R_package_on_gitHub}
+  %\VignetteIndexEntry{Quickstart guide for creating an R package on gitHub}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -16,14 +16,16 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library("RgitDemo")
+# library("RgitDemo")
 ```
 
 
-## Steps to get started
+## Setup your Project on GitHub
+
+### Quickstart
 
 ```{r, eval=FALSE}
-# optionally write default settings into your R profile
+# 0) optionally write default settings into your R profile
 usethis::edit_r_profile()
 usethis::edit_r_environ()
 
@@ -31,13 +33,45 @@ usethis::edit_r_environ()
 usethis::create_package("/Projects/Packages/RgitDemo")
 
 # 2) create this vignette
-usethis::use_vignette("Quickstart_R_package_on_gitHub")
+usethis::use_vignette("Quickstart_R_package_on_gitHub", title = "Quickstart guide for creating an R package on gitHub")
 
 # 3) initialize git
 usethis::use_github()
 
 # 4) create your first function
 usethis::use_r("utils_list.R")
+
+# 5) invite your collaborators to fork your repo and start working together.
 ```
 
-## Some explanations
+### Some explanations
+
+
+**Prerequisites** create an account on gitHub and download the RStudio IDE.
+
+**In step 0** we may set some default values.
+
++ If you do not have already a GitHub token create it with `usethis::create_github_token()`.
++ Store the token inside RStudio by calling `gitcreds::gitcreds_set()` then pasting the token. 
+This allows to use the gui to push and pull directly from the RStudio IDE.
++ 
+
+**In step 1** we create a minimal R package based on RStudio projects
+
+
+**In step 2** we create a template for an vignette based on Rmarkdown
+
+
+**In step 3** we initialize git, start version control.
+
+
+**In step 4** we create an R-script in the R directory and add a first function to our package.
+
+**From Step 5 onwards** we start to develop the project collectively.
+At this point it is recommended not to make any changes directly on the master/main branch.
+Instead we use forks to develop new functionality and merge them into the main branch via pull requests, which are explained in the next section.
+
+## Start collaborative development
+
+
+
