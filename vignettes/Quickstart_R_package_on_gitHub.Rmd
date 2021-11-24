@@ -27,14 +27,17 @@ library("RgitDemo")
 usethis::edit_r_profile()
 usethis::edit_r_environ()
 
-# create this project
+# 1) create this project
 usethis::create_package("/Projects/Packages/RgitDemo")
 
-# create this vignette
+# 2) create this vignette
 usethis::use_vignette("Quickstart_R_package_on_gitHub")
 
-# initialize git
+# 3) initialize git
+usethis::use_github()
 
+# 4) create your first function
+usethis::use_r("utils_list.R")
 ```
 
 ## Some explanations
