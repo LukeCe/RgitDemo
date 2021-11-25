@@ -15,8 +15,8 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-# library("RgitDemo")
+```{r setup, eval=FALSE}
+library("usethis")
 ```
 
 
@@ -54,6 +54,19 @@ usethis::use_r("utils_list.R")
 + If you do not have already a GitHub token create it with `usethis::create_github_token()`.
 + Store the token inside RStudio by calling `gitcreds::gitcreds_set()` then pasting the token. 
 This allows to use the gui to push and pull directly from the RStudio IDE.
++ Above works if you use the https protocol to communicate with gitHUB. Alternatively you can use the ssh protocol which requires to create an ssh key pair and upload the public key to your github account.
+
+```{bash}
+# check which remote you are using
+git remote -v
+
+# to change from https to ssh use
+git remote set-url origin git@github.com:LukeCe/RgitDemo.git
+
+# to change from ssh to https use
+git remote set-url origin https://github.com/LukeCe/RgitDemo.git
+```
+
 + 
 
 **In step 1** we create a minimal R package based on RStudio projects
@@ -69,9 +82,32 @@ This allows to use the gui to push and pull directly from the RStudio IDE.
 
 **From Step 5 onwards** we start to develop the project collectively.
 At this point it is recommended not to make any changes directly on the master/main branch.
-Instead we use forks to develop new functionality and merge them into the main branch via pull requests, which are explained in the next section.
+Instead we use branches and forks to develop new functionality and merge them into the main branch via pull requests, which are explained in the next section.
 
 ## Start collaborative development
 
+The master or main branch of on a repository corresponds to the development version of the code.
+This version can is available to users who can experiment with new functionality and share their experience with the authors.
+Once the maintainers are satisfied the will be packaged into a release version.
+
+Although the development version does usually not grantee stability, it should have high standards.
+For this reason direct commits to the master branch are discouraged.
+Instead, the contributors to a project develop their functionality in a different branch.
+Only when the implementation of the new feature is satisfactory they make a pull request, which invites the maintainers to merge their contribution into the main branch.
+
+The pull request workflow has the advantage that maintainers can easily review the new code and handle the merge directly in gitHub.
+In case of merge conflicts the maintainer and contributor is notified and they can decide how to resolve them.
+In most cases the contributor is asked revise their code until the merge can proceed without conflicts.
+
+### How to make a contribution
+
+A contribution adds new functionality to a cooperative development projects.
+The usual way to start contributing to a repository is by forking the project on gitHub.
+Public projects can be forked by anyone and private ones by invited collaborators.
 
 
+
+## Additional resources
+
+- https://happygitwithr.com/
+- https://pandammonium.org/how-to-change-a-git-repository-from-https-to-ssh/
