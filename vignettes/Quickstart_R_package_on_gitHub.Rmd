@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup, eval=FALSE}
+library("tinytest")
 library("usethis")
 ```
 
@@ -80,7 +81,7 @@ git remote set-url origin https://github.com/LukeCe/RgitDemo.git
 
 **In step 4** we create an R-script in the R directory and add a first function to our package.
 
-**From Step 5 onwards** we start to develop the project collectively.
+**From Step 5 onward** we start to develop the project collectively.
 At this point it is recommended not to make any changes directly on the master/main branch.
 Instead we use branches and forks to develop new functionality and merge them into the main branch via pull requests, which are explained in the next section.
 
@@ -99,15 +100,59 @@ The pull request workflow has the advantage that maintainers can easily review t
 In case of merge conflicts the maintainer and contributor is notified and they can decide how to resolve them.
 In most cases the contributor is asked revise their code until the merge can proceed without conflicts.
 
-### How to make a contribution
+### Start to contribute to a collaborative project
 
-A contribution adds new functionality to a cooperative development projects.
-The usual way to start contributing to a repository is by forking the project on gitHub.
-Public projects can be forked by anyone and private ones by invited collaborators.
+1. Fork the original repository (called upstream) on your own gitHub
+2. Clone the fork into your local environment.
+3. Make a branch for your feature and push the branch to your fork
+4. Once the feature is ready open a pull request on github inviting the maintainer to copy your branch on merge it into hist master
 
+
+
+### Some explanations
+
+A fork is 
+
+
+### A note for the maintainer
+
+
+As a maintainer you can either fork your own repository and use the same model as for contributors or you develop directly on a branch of the original repository.
+
+The maintainer of a project can choose the same model for contributing to the project as any other contributor.
+In this he has to fork his own repository which is not directly supported by github.
+We can work around this creating a second account or by replacing the first two steps in above workflow by the following five:
+
++ Create an empty github repository e.g. RgitDemo_fork
++ Clone this repository `git clone git@github.com:LukeCe/RgitDemo_fork`
++ Add the original repository as an upstream `git remote add upstream git@github.com:LukeCe/RgitDemo`
++ Pull the master branch from upstream `git pull upstream master`
++ Push the master branch to your fork `git push origin master`
+
+
+Alternatively the maintainer can continue to develop in the original repository.
+In any case new features should be developed in branches and not directly on the master.
+Once the feature is ready it can either be merged locally or pushed to github and merged via a pull request.
+One disadvantage of this model is that the upstream repository may have multiple branches which may be confusing for new contributors and users interested in the development version of the software.
+
+
+## Automation of tasks
+
+### Building the package website
+
+```{r, eval=FALSE}
+usethis::use_pkgdown_github_pages()
+usethis::use_github_action("pkgdown")
+```
+
+### R CMD check
+
+### Unit testing
 
 
 ## Additional resources
 
 - https://happygitwithr.com/
 - https://pandammonium.org/how-to-change-a-git-repository-from-https-to-ssh/
+- https://deanmalone.net/post/how-to-fork-your-own-repo-on-github/
+- https://www.tinyverse.org/
