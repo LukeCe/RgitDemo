@@ -161,17 +161,35 @@ In most cases the contributor is asked to revise their code until the merge can 
 Either use the terminal `git clone git@github.com:<YOUR_GITHUB>/RgitDemo.git` 
 Or use the RStudio IDE using file > New Project > Version control > Give url ([more detailled instructions are here](https://happygitwithr.com/existing-github-first.html#existing-github-first))
 
-3. Create a branch for your feature and push the branch to your fork
-This cane be done via the git pane in RStudio
+3. Create a branch write your code and push the branch to your fork
+All this can be done via the git pane in RStudio. 
 
-4. Once the feature is ready open a pull request on github inviting the maintainer to copy your branch on merge it into hist master
+- click on the git pane (1)
+- click new branch and create a name (2 and 3)
+- write your code
+- commit the changes (4)
+- push them to your fork (5)
+
+
+![](screenshot_branch.png){ width=100% }
+
+To be sure you are no on master you can also use the git pane.
+
+![](screenshot_branch2.png){ width=100% }
+
+
+4. Regularly check that your fork is up to date with respect to master branch on the upstream repository.
+
+
+5. Once the feature is ready open a pull request on github inviting the maintainer to copy your branch on merge it into hist master
+
+This has to be done within GitHub
 
 
 
 ### Some explanations
 
 A fork is 
-
 
 ### A note for the maintainer
 
